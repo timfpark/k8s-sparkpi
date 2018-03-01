@@ -1,0 +1,3 @@
+sbt package
+docker build -t timfpark/pispark:20180302 .
+docker push timfpark/pispark:20180302
