@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+  <property>
+    <name>fs.defaultFS</name>
+    <value>wasb://activityfeatures@rhomlocations.blob.core.windows.net</value>
+    <final>true</final>
+  </property>
+  <property>
+    <name>fs.azure.account.key.rhomlocations.blob.core.windows.net</name>
+    <value>4495ciCh1/jzDzQBeXB5CxorjJo/+azb197CGb3pl8t2koxXMGA/44G11d0PRj73ZiRURoD7y5urMHP0U3XdUQ==</value>
+    <description>Azure Blob Storage access key</description>
+  </property>
+</configuration>

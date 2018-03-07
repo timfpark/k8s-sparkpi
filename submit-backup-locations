@@ -1,7 +1,9 @@
 bin/spark-submit --master k8s://blue-rhom-io.eastus2.cloudapp.azure.com:443 \
-                 --deploy-mode cluster \ 
-                 --name spark-pi \
-                 --class org.apache.spark.examples.SparkPi \
-                 --conf spark.executor.instances=16 \
-                 --conf spark.kubernetes.container.image=timfpark/pispark:20180302 \
-                 local:///opt/spark/jars/k8s-sparkpi_2.11-0.1.0-SNAPSHOT.jar 10000
+                 --deploy-mode cluster \
+                 --name backupLocations \
+                 --class io.rhom.BackupLocations \
+                 --conf spark.executor.instances=2 \
+                 --conf spark.cassandra.connection.host=10.1.0.10 \
+                 --conf spark.kubernetes.container.image=timfpark/rhom-backup-locations:20180306v12 \
+                 --jars https://dl.bintray.com/spark-packages/maven/datastax/spark-cassandra-connector/2.0.3-s_2.11/spark-cassandra-connector-2.0.3-s_2.11.jar,http://central.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.2/hadoop-azure-2.7.2.jar,http://central.maven.org/maven2/com/microsoft/azure/azure-storage/3.1.0/azure-storage-3.1.0.jar,http://central.maven.org/maven2/com/databricks/spark-avro_2.11/4.0.0/spark-avro_2.11-4.0.0.jar \
+                 local:///opt/spark/jars/rhom-backup-locations_2.11-0.1.0-SNAPSHOT.jar

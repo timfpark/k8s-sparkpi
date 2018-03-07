@@ -32,6 +32,16 @@ object BackupLocations {
       .appName("BackupLocations")
       .getOrCreate()
 
+    spark.sparkContext.hadoopConfiguration.set(
+      "fs.defaultFS",
+      "wasb://activityfeatures@rhomlocations.blob.core.windows.net"
+    )
+
+    spark.sparkContext.hadoopConfiguration.set(
+      "fs.azure.account.key.rhomlocations.blob.core.windows.net",
+      "4495ciCh1/jzDzQBeXB5CxorjJo/+azb197CGb3pl8t2koxXMGA/44G11d0PRj73ZiRURoD7y5urMHP0U3XdUQ=="
+    )
+
     val df = spark
       .read
       .format("org.apache.spark.sql.cassandra")
@@ -43,7 +53,7 @@ object BackupLocations {
       .format("com.databricks.spark.avro")
       .save("wasb://backups@rhomlocations.blob.core.windows.net/locations/test")
 
-    spark.stop()
+    //spark.stop()
   }
 }
 // scalastyle:on println
